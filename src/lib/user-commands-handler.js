@@ -6,13 +6,13 @@ const commandsMap = {};
 
 let _inputHandled = false;
 
-const handleUserInput = (input) => {
+const handleUserInput = async (input, currentDirectoryContext, onBeforeUserInput) => {
     const commandParts = input.toString().split(' ');
     const commandName = commandParts[0].trim().toLocaleLowerCase();
     const command = commandsMap[commandName];
     if (command) {
         try {
-            command.run(commandParts);
+            await command.run(commandParts, currentDirectoryContext);
         }
         catch (e) {
             if (e instanceof InvalidInputError) {
@@ -26,12 +26,14 @@ const handleUserInput = (input) => {
     else {
         process.stdout.write(INVALID_INPUT_MESSAGE + '\n');
     }
+    onBeforeUserInput && onBeforeUserInput();
 };
 
-const startHandleUserInput = async () => {
+const startHandleUserInput = async (currentDirectoryContext, onBeforeUserInput) => {
     if (_inputHandled) return;
     _inputHandled = true;
-    process.stdin.on('data', handleUserInput);
+    onBeforeUserInput && onBeforeUserInput();
+    process.stdin.on('data', async (data) => await handleUserInput(data, currentDirectoryContext, onBeforeUserInput));
 };
 
 const registerCommands = (commands) => commands.forEach(c => commandsMap[c.commandName] = c );

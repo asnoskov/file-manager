@@ -3,7 +3,7 @@ import getUserNameFromArgs from "../arg-utils/getUserNameFromArgs.js";
 
 const exitCommand = {
     commandName: ".exit",
-    run: async (args) => {
+    run: async (args, directoryContext) => {
         printGoodbye(getUserNameFromArgs());
         process.exit();
     }
