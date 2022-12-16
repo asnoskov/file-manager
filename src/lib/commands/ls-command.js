@@ -1,6 +1,10 @@
 import { printGoodbye } from "../app-messages/index.js";
 import fs from 'node:fs/promises';
 
+const FILE_TYPE = 'file';
+const DIRECTORY_TYPE = 'directory';
+const TYPES_SORT_ORDER = { [FILE_TYPE]: 1, [DIRECTORY_TYPE]: 0 };
+
 const lsCommand = {
     commandName: "ls",
     run: async (args, directoryContext) => {
@@ -11,15 +15,21 @@ const lsCommand = {
                 const stat = await fs.stat(`${workingDirectory}/${file}`);
                 return {
                     Name: file,
-                    Type: stat.isFile() ? 'file' : 'directory'
+                    Type: stat.isFile() ? FILE_TYPE : DIRECTORY_TYPE
                 };
             });
         const fileInfos = await Promise.all(fileInfoPromises);
+        fileInfos.sort((a, b) => {
+            const typeDiff = TYPES_SORT_ORDER[a.Type] - TYPES_SORT_ORDER[b.Type];
+            if (typeDiff !== 0) {
+                return typeDiff;
+            }
+            if(a.Name.toLocaleLowerCase() < b.Name.toLocaleLowerCase()) { return -1; }
+            if(a.Name.toLocaleLowerCase() > b.Name.toLocaleLowerCase()) { return 1; }
+            return 0;
+        });
 
         console.table(fileInfos);
-        /*fileInfos.forEach(fileInfo => {
-            console.log(fileInfo.fileName + ` is ${fileInfo.isFile ? 'file':'directory'}`);
-        });*/
     }
 }
 
