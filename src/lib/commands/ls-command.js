@@ -1,4 +1,3 @@
-import { printGoodbye } from "../app-messages/index.js";
 import fs from 'node:fs/promises';
 
 const FILE_TYPE = 'file';
@@ -24,9 +23,9 @@ const lsCommand = {
             if (typeDiff !== 0) {
                 return typeDiff;
             }
-            if(a.Name.toLocaleLowerCase() < b.Name.toLocaleLowerCase()) { return -1; }
-            if(a.Name.toLocaleLowerCase() > b.Name.toLocaleLowerCase()) { return 1; }
-            return 0;
+            const aName = a.Name.toLocaleLowerCase();
+            const bName = b.Name.toLocaleLowerCase()
+            return aName.localeCompare(bName);
         });
 
         console.table(fileInfos);
