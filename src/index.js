@@ -1,16 +1,13 @@
 import process from 'node:process';
 import getUserNameFromArgs from './lib/arg-utils/getUserNameFromArgs.js';
-import { printWelcome, printGoodbye } from './lib/app-messages/index.js';
+import { printWelcome } from './lib/app-messages/index.js';
+import exitCommand from './lib/commands/exit-command.js';
+import userCommandsHandler from './lib/user-commands-handler.js';
 
-const handleUserInput = async () => {
-    process.stdin.on('data', (data) => {
-        process.stdout.write(`!=$command recieved=!\n`)
-    });
-};
+printWelcome(getUserNameFromArgs());
 
-printWelcome(userName);
-await handleUserInput();
-process.on('SIGINT', () => {
-    printGoodbye(getUserNameFromArgs());
-    process.exit();
+userCommandsHandler.registerCommands([exitCommand]);
+process.on('SIGINT', async () => {
+    await exitCommand.run();
 });
+await userCommandsHandler.startHandleUserInput();
