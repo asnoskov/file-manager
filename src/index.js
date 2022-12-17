@@ -7,13 +7,9 @@ import lsCommand from './lib/commands/ls-command.js';
 import upCommand from './lib/commands/up-command.js';
 import cdCommand from './lib/commands/cd-command.js';
 import userCommandsHandler from './lib/user-commands-handler.js';
-import { VirtualWorkingDirectoryContext } from './working-directory-context.js';
 
+process.chdir(os.homedir());
 printWelcome(getUserNameFromArgs());
-
 userCommandsHandler.registerCommands([exitCommand, lsCommand, upCommand, cdCommand]);
-const workingDirectoryContext = new VirtualWorkingDirectoryContext(os.homedir());
-await userCommandsHandler.startHandleUserInput(
-    workingDirectoryContext,
-    () => printWorkingDirectory(workingDirectoryContext.workingDirectory));
+await userCommandsHandler.startHandleUserInput(() => printWorkingDirectory(process.cwd()));
 process.on('SIGINT', () => exitCommand.run([]));

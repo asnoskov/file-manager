@@ -6,11 +6,11 @@ const TYPES_SORT_ORDER = { [FILE_TYPE]: 1, [DIRECTORY_TYPE]: 0 };
 
 const lsCommand = {
     commandName: "ls",
-    run: async (args, directoryContext) => {
+    run: async (args) => {
         if (args.length > 0) {
             throw new InvalidInputError();
         }
-        const { workingDirectory } = directoryContext;
+        const workingDirectory = process.cwd();
         const files = await fs.readdir(workingDirectory);
         const fileInfoPromises = files.map(async (file) => 
             {

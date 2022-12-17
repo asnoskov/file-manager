@@ -4,7 +4,7 @@ import InvalidInputError from "../custom-errors/invalid-input-error.js";
 
 const exitCommand = {
     commandName: ".exit",
-    run: async (args, directoryContext) => {
+    run: async (args) => {
         if (args.length > 0) {
             throw new InvalidInputError();
         }
