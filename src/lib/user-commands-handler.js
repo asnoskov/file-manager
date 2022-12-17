@@ -12,7 +12,8 @@ const handleUserInput = async (input, currentDirectoryContext, onBeforeUserInput
     const command = commandsMap[commandName];
     if (command) {
         try {
-            await command.run(commandParts, currentDirectoryContext);
+            const commandArgs = commandParts.slice(1, commandParts.length);
+            await command.run(commandArgs, currentDirectoryContext);
         }
         catch (e) {
             if (e instanceof InvalidInputError) {
