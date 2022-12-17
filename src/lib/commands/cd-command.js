@@ -1,10 +1,7 @@
-import path from 'node:path';
-import InvalidInputError from "../custom-errors/invalid-input-error.js";
-
-const DIRECTORY_DOES_NOT_EXIST = "directory does not exist";
+import InvalidInputError from '../custom-errors/invalid-input-error.js';
 
 const cdCommand = {
-    commandName: "cd",
+    commandName: 'cd',
     run: async (args) => {
         if (args.length > 1) {
             throw new InvalidInputError();

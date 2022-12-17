@@ -1,7 +1,7 @@
-import InvalidInputError from "./custom-errors/invalid-input-error.js";
+import InvalidInputError from './custom-errors/invalid-input-error.js';
 
 const INVALID_INPUT_MESSAGE = 'Invalid input';
-const OPERATION_FAILED_MESSAGE = "Operation failed";
+const OPERATION_FAILED_MESSAGE = 'Operation failed';
 const commandsMap = {};
 
 let _inputHandled = false;

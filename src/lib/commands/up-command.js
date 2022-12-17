@@ -1,8 +1,8 @@
 import path from 'node:path';
-import InvalidInputError from "../custom-errors/invalid-input-error.js";
+import InvalidInputError from '../custom-errors/invalid-input-error.js';
 
 const upCommand = {
-    commandName: "up",
+    commandName: 'up',
     run: async (args) => {
         if (args.length > 0) {
             throw new InvalidInputError();
@@ -13,7 +13,7 @@ const upCommand = {
         if (isCurrentDirectoryARoot) {
             return;
         }
-        process.chdir("..");
+        process.chdir('..');
     }
 }
 

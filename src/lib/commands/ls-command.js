@@ -5,7 +5,7 @@ const DIRECTORY_TYPE = 'directory';
 const TYPES_SORT_ORDER = { [FILE_TYPE]: 1, [DIRECTORY_TYPE]: 0 };
 
 const lsCommand = {
-    commandName: "ls",
+    commandName: 'ls',
     run: async (args) => {
         if (args.length > 0) {
             throw new InvalidInputError();
