@@ -8,10 +8,12 @@ import upCommand from './lib/commands/up-command.js';
 import cdCommand from './lib/commands/cd-command.js';
 import addCommand from './lib/commands/add-command.js';
 import rnCommand from './lib/commands/rn-command.js';
+import catCommand from './lib/commands/cat-command.js';
 import userCommandsHandler from './lib/user-commands-handler.js';
 
 process.chdir(os.homedir());
 printWelcome(getUserNameFromArgs());
-userCommandsHandler.registerCommands([exitCommand, lsCommand, upCommand, cdCommand, addCommand, rnCommand]);
+userCommandsHandler.registerCommands([exitCommand, lsCommand, upCommand, cdCommand, addCommand,
+    rnCommand, catCommand]);
 await userCommandsHandler.startHandleUserInput(() => printWorkingDirectory(process.cwd()));
 process.on('SIGINT', () => exitCommand.run([]));
