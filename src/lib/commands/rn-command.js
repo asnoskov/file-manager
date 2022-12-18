@@ -11,7 +11,8 @@ const rnCommand = {
         }
         const workingDirectory = process.cwd();
         const pathToFile = path.resolve(workingDirectory, args[0].trim());
-        const newFileName = path.resolve(workingDirectory, args[1].trim());
+        const fileDirectory = path.dirname(pathToFile);
+        const newFileName = path.resolve(fileDirectory, args[1].trim());
 
         if ((!await checkFileOrFolderExists(pathToFile))
             || await checkFileOrFolderExists(newFileName)
