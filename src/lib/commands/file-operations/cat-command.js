@@ -10,10 +10,17 @@ const catCommand = {
         }
         const filePath = args[0].trim();
         const fileAsReadable = fs.createReadStream(filePath);
-        for await (const data of fileAsReadable) {
-            stdout.write(data);
+        try {
+            return await new Promise((resolve, reject) => {
+                fileAsReadable.on('error', r => reject(r));
+                fileAsReadable.on('end', r => resolve(r));
+                fileAsReadable.pipe(stdout);
+            });
         }
-        stdout.write('\n');
+        catch (e) {
+            fileAsReadable.destroy();
+            throw e;
+        }
     }
 }
 
