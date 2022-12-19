@@ -1,0 +1,1 @@
+export { default as hashCommand } from './hash-command.js';
