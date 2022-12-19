@@ -1,5 +1,5 @@
 import fs from 'node:fs/promises';
-import InvalidInputError from '../custom-errors/invalid-input-error.js';
+import InvalidInputError from '../../custom-errors/invalid-input-error.js';
 
 const addCommand = {
     commandName: 'add',

@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import { stdout } from 'node:process';
-import InvalidInputError from '../custom-errors/invalid-input-error.js';
+import InvalidInputError from '../../custom-errors/invalid-input-error.js';
 
 const catCommand = {
     commandName: 'cat',

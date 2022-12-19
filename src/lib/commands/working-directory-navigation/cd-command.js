@@ -1,4 +1,4 @@
-import InvalidInputError from '../custom-errors/invalid-input-error.js';
+import InvalidInputError from '../../custom-errors/invalid-input-error.js';
 
 const cdCommand = {
     commandName: 'cd',

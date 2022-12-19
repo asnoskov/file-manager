@@ -1,6 +1,6 @@
-import { printGoodbye } from '../app-messages/index.js';
-import getUserNameFromArgs from '../arg-utils/getUserNameFromArgs.js';
-import InvalidInputError from '../custom-errors/invalid-input-error.js';
+import { printGoodbye } from '../../app-messages/index.js';
+import getUserNameFromArgs from '../../arg-utils/getUserNameFromArgs.js';
+import InvalidInputError from '../../custom-errors/invalid-input-error.js';
 
 const exitCommand = {
     commandName: '.exit',

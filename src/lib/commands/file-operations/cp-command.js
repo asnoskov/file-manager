@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import InvalidInputError from '../custom-errors/invalid-input-error.js';
-import { checkFileOrFolderExists } from '../fs-utils/check-file-or-folder-exists.js';
+import InvalidInputError from '../../custom-errors/invalid-input-error.js';
+import { checkFileOrFolderExists } from '../../fs-utils/check-file-or-folder-exists.js';
 
 const cpCommand = {
     commandName: 'cp',

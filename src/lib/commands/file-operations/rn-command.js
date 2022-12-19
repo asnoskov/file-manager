@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import InvalidInputError from '../custom-errors/invalid-input-error.js';
-import { checkFileOrFolderExists } from '../fs-utils/check-file-or-folder-exists.js';
+import InvalidInputError from '../../custom-errors/invalid-input-error.js';
+import { checkFileOrFolderExists } from '../../fs-utils/check-file-or-folder-exists.js';
 
 const rnCommand = {
     commandName: 'rn',

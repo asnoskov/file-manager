@@ -1,5 +1,5 @@
 import fs from 'node:fs/promises';
-import InvalidInputError from '../custom-errors/invalid-input-error.js';
+import InvalidInputError from '../../custom-errors/invalid-input-error.js';
 
 const FILE_TYPE = 'file';
 const DIRECTORY_TYPE = 'directory';

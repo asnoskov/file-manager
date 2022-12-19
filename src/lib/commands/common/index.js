@@ -1,0 +1,1 @@
+export { default as exitCommand } from './exit-command.js';

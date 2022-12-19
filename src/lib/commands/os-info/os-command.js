@@ -1,6 +1,6 @@
 import os from 'node:os';
 import { stdout } from 'node:process';
-import InvalidInputError from '../custom-errors/invalid-input-error.js';
+import InvalidInputError from '../../custom-errors/invalid-input-error.js';
 
 const printEndOfLine = () => stdout.write(JSON.stringify(os.EOL));
 const printCpusInfo = () => {
