@@ -1,10 +1,11 @@
 
+import fs from 'node:fs/promises';
 import path from 'node:path';
 import InvalidInputError from '../../custom-errors/invalid-input-error.js';
 import copyFile from '../../fs-utils/copy-file.js';
 
-const cpCommand = {
-    commandName: 'cp',
+const mvCommand = {
+    commandName: 'mv',
     run: async (args) => {
         if (args.length !== 2) {
             throw new InvalidInputError();
@@ -18,7 +19,8 @@ const cpCommand = {
         const absolutePathToNewFile = path.resolve(pathToNewDirectory, fileName);
 
         await copyFile(absolutePathToFile, absolutePathToNewFile);
+        await fs.unlink(absolutePathToFile);
     }
 }
 
-export default cpCommand;
+export default mvCommand;
