@@ -1,6 +1,6 @@
 import fs from 'node:fs/promises';
 import InvalidInputError from '../../custom-errors/invalid-input-error.js';
-import { checkFileOrFolderExists } from '../../fs-utils/check-file-or-folder-exists.js';
+import { checkFileOrFolderExists } from '../../utils/fs-utils/check-file-or-folder-exists.js';
 
 const rmCommand = {
     commandName: 'rm',

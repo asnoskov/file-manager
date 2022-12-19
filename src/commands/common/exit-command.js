@@ -1,5 +1,5 @@
 import { printGoodbye } from '../../app-messages/index.js';
-import getUserNameFromArgs from '../../arg-utils/getUserNameFromArgs.js';
+import getUserNameFromArgs from '../../utils/arg-utils/getUserNameFromArgs.js';
 import InvalidInputError from '../../custom-errors/invalid-input-error.js';
 
 const exitCommand = {

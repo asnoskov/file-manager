@@ -2,7 +2,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import InvalidInputError from '../../custom-errors/invalid-input-error.js';
-import copyFile from '../../fs-utils/copy-file.js';
+import copyFile from '../../utils/fs-utils/copy-file.js';
 
 const mvCommand = {
     commandName: 'mv',
